@@ -9,8 +9,6 @@ on:
 permissions:
   # Standard permissions
   contents: read
-  # DNS zone management for Cloudflare/AWS Route53
-  zone: write
   # Allow cancelling previous workflow runs
   actions: write
 
@@ -78,6 +76,7 @@ jobs:
         with:
           token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           production: true
+                directory: dist
 
   deploy-route53:
     name: Update Route53 DNS
@@ -87,6 +86,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
 
       - name: Update Route53 DNS records
         uses: aws-actions/route53@v1.6.0
