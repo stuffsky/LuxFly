@@ -97,7 +97,7 @@ jobs:
       - name: Update Route53 DNS records
         uses: aws-actions/route53@v1.6.0
         with:
-          action: create
+          action: upsert
           hosted-zone-id: ${{ secrets.ROUTE53_HOSTED_ZONE_ID }}
           record-name: luxfly.example.com
           record-type: A
