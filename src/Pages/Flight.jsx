@@ -1,12 +1,9 @@
-import React from 'react'
-import { Send, Plane, MoveRight, ArrowRight, Play, ChevronRight, PlaneTakeoff, Hotel, Headphones, Shield, Star, PlaneLanding, Building2, Wallet, Car, TicketsPlane, Search, ArrowUpDown, MapPin } from 'lucide-react';
-import { useState, useEffect } from "react";
+import { Plane, MoveRight, ChevronRight, PlaneTakeoff, Hotel, PlaneLanding, Wallet, Car, TicketsPlane, Search, ArrowUpDown, MapPin } from 'lucide-react';
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 
 const Flight = () => {
-    const [tripType, setTripType] = useState("round");
-    const [tab, setTab] = useState("flights");
     const [active, setActive] = useState("flight");
 
     return (
